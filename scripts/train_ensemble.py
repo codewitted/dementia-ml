@@ -108,7 +108,18 @@ def main(config_path):
     X_train_processed = preprocessor.transform(X_train)
     X_test_processed = preprocessor.transform(X_test)
     
-    feature_names = preprocessor.get_feature_names_out()
+    # Get feature names matching the training pipeline format
+    actual_numeric = [f for f in feature_config['numeric'] if f in available_features]
+    actual_categorical = [f for f in feature_config['categorical'] if f in available_features]
+    
+    num_features_out = actual_numeric
+    cat_encoder = preprocessor.named_transformers_["cat"].named_steps["onehot"]
+    if hasattr(cat_encoder, "get_feature_names_out"):
+        cat_features_out = cat_encoder.get_feature_names_out(actual_categorical)
+    else:
+        cat_features_out = cat_encoder.get_feature_names(actual_categorical)
+    
+    feature_names = num_features_out + list(cat_features_out)
     X_train_processed = pd.DataFrame(
         X_train_processed, columns=feature_names, index=X_train.index
     )

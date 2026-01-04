@@ -16,8 +16,9 @@ def test_get_preprocessing_pipeline():
     pipeline = get_preprocessing_pipeline(numeric_features, categorical_features)
     
     assert pipeline is not None
-    assert 'num' in pipeline.named_transformers_
-    assert 'cat' in pipeline.named_transformers_
+    # Check transformers list (before fitting)
+    assert 'num' in [t[0] for t in pipeline.transformers]
+    assert 'cat' in [t[0] for t in pipeline.transformers]
 
 def test_get_fit_transform():
     """Test preprocessing fit and transform."""
