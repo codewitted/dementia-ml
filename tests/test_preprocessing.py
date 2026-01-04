@@ -19,7 +19,6 @@ def test_get_preprocessing_pipeline():
     assert 'num' in pipeline.named_transformers_
     assert 'cat' in pipeline.named_transformers_
 
-
 def test_get_fit_transform():
     """Test preprocessing fit and transform."""
     # Create sample data

@@ -19,6 +19,7 @@ from pathlib import Path
 import yaml
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, roc_auc_score
 
 # Add src to path
 sys.path.append(str(Path(__file__).parent.parent / 'src'))
@@ -146,8 +147,6 @@ def main(config_path):
     logger.info(f"Saved preprocessor to {preprocessor_path}")
     
     # Evaluate models
-    from sklearn.metrics import accuracy_score, roc_auc_score
-    
     logger.info("\nModel Evaluation:")
     logger.info("=" * 60)
     for name, model in models.items():
