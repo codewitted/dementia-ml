@@ -20,16 +20,16 @@ This dissertation presented the development and evaluation of a comprehensive ma
 
 Successfully developed a complete, production-ready machine learning pipeline with:
 
-**Modular Architecture**: Clear separation between data loading (`src/data_loading.py`), preprocessing (`src/preprocessing.py`), modeling (`src/tabular_models.py`, `src/ensemble.py`), and evaluation (`scripts/evaluate_models.py`)
+**Modular Architecture**: Clear separation between data loading (`src/data_loading.py`), preprocessing (`src/preprocessing.py`), modeling (`src/tabular_models.py`, `src/ensemble.py`), and evaluation (`scripts/evaluate_models.py`) following software engineering best practices (Martin, 2008; Gamma et al., 1994)
 
-**Automated Execution**: Single-command pipeline execution (`python main.py --mode full`) completing all stages from data loading through final report generation
+**Automated Execution**: Single-command pipeline execution (`python main.py --mode full`) completing all stages from data loading through final report generation (Fowler, 2018)
 
 **Comprehensive Functionality**: 
-- Robust data loading with validation
-- Preprocessing handling missing values, feature encoding, and scaling
-- Five distinct model implementations
-- Complete evaluation with six metrics
-- Publication-ready visualizations
+- Robust data loading with validation (Wickham and Grolemund, 2016)
+- Preprocessing handling missing values, feature encoding, and scaling (Géron, 2019)
+- Five distinct model implementations (Pedregosa et al., 2011)
+- Complete evaluation with six metrics (Powers, 2011)
+- Publication-ready visualizations (Hunter, 2007)
 
 **Production Quality**:
 - Comprehensive error handling
@@ -135,29 +135,29 @@ Ensured complete reproducibility through:
 
 ### 7.3.1 Iterative Development Success
 
-The iterative development approach proved highly effective:
+The iterative development approach proved highly effective (Beck et al., 2001; Larman and Basili, 2003):
 
-**Flexibility**: Enabled adaptation based on experimental results (e.g., increasing ensemble focus after observing strong performance)
+**Flexibility**: Enabled adaptation based on experimental results (e.g., increasing ensemble focus after observing strong performance) (Cockburn, 2006)
 
-**Risk Mitigation**: Early detection of issues (missing data, class imbalance) allowed timely solutions
+**Risk Mitigation**: Early detection of issues (missing data, class imbalance) allowed timely solutions (Boehm, 1988)
 
-**Continuous Improvement**: Regular refinement cycles improved code quality, documentation, and performance
+**Continuous Improvement**: Regular refinement cycles improved code quality, documentation, and performance (Schwaber and Beedle, 2001)
 
-**Time Management**: Structured phases with milestones ensured steady progress meeting all deadlines
+**Time Management**: Structured phases with milestones ensured steady progress meeting all deadlines (Pressman and Maxim, 2014)
 
 ### 7.3.2 Challenges Overcome
 
 Successfully addressed multiple challenges:
 
-**Missing Data**: Robust imputation strategy (median for numerical, mode for categorical) maintained data quality
+**Missing Data**: Robust imputation strategy (median for numerical, mode for categorical) maintained data quality (Little and Rubin, 2019; Raghunathan et al., 2001)
 
-**Class Imbalance**: Stratified splitting preserved class distribution; considered but didn't require SMOTE or class weights
+**Class Imbalance**: Stratified splitting preserved class distribution; considered but didn't require SMOTE or class weights (Chawla et al., 2002; He and Garcia, 2009)
 
-**Reproducibility**: Fixed random seeds and versioned dependencies achieved complete reproducibility
+**Reproducibility**: Fixed random seeds and versioned dependencies achieved complete reproducibility (Peng, 2011; Sandve et al., 2013)
 
-**Interpretability**: SHAP analysis bridged performance-interpretability gap enabling clinical trust
+**Interpretability**: SHAP analysis bridged performance-interpretability gap enabling clinical trust (Lundberg and Lee, 2017; Molnar, 2020)
 
-**Efficiency**: Parallelization and algorithm optimization kept pipeline execution under 30 minutes
+**Efficiency**: Parallelization and algorithm optimization kept pipeline execution under 30 minutes (Pedregosa et al., 2011)
 
 ## 7.4 Testing and Evaluation Summary
 

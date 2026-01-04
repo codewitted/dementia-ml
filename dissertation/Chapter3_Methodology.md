@@ -2,7 +2,7 @@
 
 ## 3.1 Software Development Methodology
 
-This project employed an iterative, agile-inspired development approach adapted for research software development. Unlike traditional waterfall methods with rigid sequential phases, the iterative approach enabled continuous refinement based on experimental results, literature insights, and technical discoveries.
+This project employed an iterative, agile-inspired development approach adapted for research software development (Beck et al., 2001; Sommerville, 2016). Unlike traditional waterfall methods with rigid sequential phases (Royce, 1970), the iterative approach enabled continuous refinement based on experimental results, literature insights, and technical discoveries.
 
 ### 3.1.1 Iterative Development Framework
 
@@ -67,31 +67,31 @@ This cyclic approach proved essential for ML research where initial assumptions 
 
 ### 3.2.1 Why Iterative Over Waterfall?
 
-Machine learning research inherently involves uncertainty and discovery. Initial design decisions often require revision based on experimental results:
+Machine learning research inherently involves uncertainty and discovery (Sculley et al., 2015). Initial design decisions often require revision based on experimental results:
 
-**Experimentation-Driven**: ML development requires frequent experiments to tune hyperparameters, select features, and compare algorithms. Waterfall's rigid phases would prevent necessary iteration.
+**Experimentation-Driven**: ML development requires frequent experiments to tune hyperparameters, select features, and compare algorithms (Bergstra and Bengio, 2012). Waterfall's rigid phases would prevent necessary iteration.
 
-**Knowledge Discovery**: Understanding which approaches work best emerges through experimentation, not upfront specification.
+**Knowledge Discovery**: Understanding which approaches work best emerges through experimentation, not upfront specification (Domingos, 2012).
 
-**Flexible Response**: Ability to quickly pivot based on results is critical. For example, discovering that ensemble methods outperform individual models led to increased focus on ensemble development.
+**Flexible Response**: Ability to quickly pivot based on results is critical (Boehm, 1988). For example, discovering that ensemble methods outperform individual models led to increased focus on ensemble development.
 
-**Risk Management**: Iterative approach enables early detection of technical issues or flawed assumptions, allowing course correction.
+**Risk Management**: Iterative approach enables early detection of technical issues or flawed assumptions, allowing course correction (Basili and Turner, 1975).
 
 ### 3.2.2 Why Agile Principles?
 
-While not following formal Scrum or Kanban, this project adopted agile principles:
+While not following formal Scrum or Kanban (Schwaber and Sutherland, 2017), this project adopted agile principles (Beck et al., 2001):
 
-**Working Software**: Emphasis on functional code over comprehensive documentation upfront
+**Working Software**: Emphasis on functional code over comprehensive documentation upfront (Fowler and Highsmith, 2001)
 
-**Embrace Change**: Welcome requirement changes based on experimental insights
+**Embrace Change**: Welcome requirement changes based on experimental insights (Cockburn, 2006)
 
-**Regular Delivery**: Frequent commits to version control with incremental improvements
+**Regular Delivery**: Frequent commits to version control with incremental improvements (Chacon and Straub, 2014)
 
-**Technical Excellence**: Continuous attention to code quality and testing
+**Technical Excellence**: Continuous attention to code quality and testing (Martin, 2008)
 
-**Simplicity**: Focus on essential features, avoid premature optimization
+**Simplicity**: Focus on essential features, avoid premature optimization (Knuth, 1974)
 
-**Reflection**: Regular assessment of process and technical approach
+**Reflection**: Regular assessment of process and technical approach (Schwaber and Beedle, 2001)
 
 ### 3.2.3 Adaptations for Research Context
 

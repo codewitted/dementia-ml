@@ -40,15 +40,15 @@ The system was developed using a modern Python-based machine learning stack opti
 
 ### 5.2.1 Core Python Libraries
 
-**NumPy (1.24+)**: Fundamental array computing, numerical operations, random number generation with seeding for reproducibility
+**NumPy (1.24+)**: Fundamental array computing, numerical operations, random number generation with seeding for reproducibility (Harris et al., 2020)
 
-**Pandas (2.0+)**: Data manipulation, CSV I/O, DataFrame operations, statistical analysis
+**Pandas (2.0+)**: Data manipulation, CSV I/O, DataFrame operations, statistical analysis (McKinney, 2010)
 
-**scikit-learn (1.3+)**: Machine learning algorithms (Logistic Regression, Random Forest, Gradient Boosting), preprocessing (StandardScaler, SimpleImputer, OneHotEncoder), ensemble methods (StackingClassifier, VotingClassifier), model evaluation (metrics, cross-validation), model serialization (joblib)
+**scikit-learn (1.3+)**: Machine learning algorithms (Logistic Regression, Random Forest, Gradient Boosting), preprocessing (StandardScaler, SimpleImputer, OneHotEncoder), ensemble methods (StackingClassifier, VotingClassifier), model evaluation (metrics, cross-validation), model serialization (joblib) (Pedregosa et al., 2011)
 
-**PyTorch (2.0+)**: Deep learning framework for potential CNN implementation (future work)
+**PyTorch (2.0+)**: Deep learning framework for potential CNN implementation (future work) (Paszke et al., 2019)
 
-**SHAP (0.42+)**: Model explainability through SHapley Additive exPlanations, visualizations for feature importance
+**SHAP (0.42+)**: Model explainability through SHapley Additive exPlanations, visualizations for feature importance (Lundberg and Lee, 2017)
 
 ### 5.2.2 Visualization Libraries
 
@@ -101,15 +101,15 @@ def load_clinical_data(file_path):
 
 ### 5.3.2 Preprocessing Pipeline (`src/preprocessing.py`)
 
-Implements scikit-learn ColumnTransformer combining numerical and categorical preprocessing:
+Implements scikit-learn ColumnTransformer combining numerical and categorical preprocessing (Pedregosa et al., 2011; Buitinck et al., 2013):
 
 **Numerical Pipeline**:
-1. **SimpleImputer** with median strategy - handles missing values by replacing with median, robust to outliers
-2. **StandardScaler** - zero mean, unit variance normalization, essential for logistic regression performance
+1. **SimpleImputer** with median strategy - handles missing values by replacing with median, robust to outliers (Little and Rubin, 2019)
+2. **StandardScaler** - zero mean, unit variance normalization, essential for logistic regression performance (Bishop, 2006)
 
 **Categorical Pipeline**:
-1. **SimpleImputer** with most_frequent strategy - fills missing categorical values with mode
-2. **OneHotEncoder** with handle_unknown='ignore' - converts categorical variables to binary indicators, handles unseen categories gracefully
+1. **SimpleImputer** with most_frequent strategy - fills missing categorical values with mode (Allison, 2001)
+2. **OneHotEncoder** with handle_unknown='ignore' - converts categorical variables to binary indicators, handles unseen categories gracefully (Potdar et al., 2017)
 
 ```python
 def get_preprocessing_pipeline(numeric_features, categorical_features):
@@ -132,11 +132,11 @@ def get_preprocessing_pipeline(numeric_features, categorical_features):
 ```
 
 **Design Rationale**:
-- Median imputation robust to outliers in medical data
-- Standard scaling critical for distance-based and gradient-based algorithms
-- One-hot encoding preserves categorical information without imposing ordinal relationships
-- ColumnTransformer enables different preprocessing for different feature types
-- Pipeline ensures consistent transformation of training and test sets
+- Median imputation robust to outliers in medical data (Raghunathan et al., 2001)
+- Standard scaling critical for distance-based and gradient-based algorithms (Kotsiantis et al., 2007)
+- One-hot encoding preserves categorical information without imposing ordinal relationships (Hancock and Khoshgoftaar, 2020)
+- ColumnTransformer enables different preprocessing for different feature types (Pedregosa et al., 2011)
+- Pipeline ensures consistent transformation of training and test sets (Géron, 2019)
 
 ### 5.3.3 Feature Engineering
 

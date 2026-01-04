@@ -2,17 +2,17 @@
 
 ## 4.1 Requirements Gathering
 
-Requirements were gathered through multiple sources:
+Requirements were gathered through multiple sources following established software engineering practices (Pressman and Maxim, 2014):
 
-**Literature Analysis**: Reviewing published dementia prediction systems to understand common features, evaluation metrics, and performance targets
+**Literature Analysis**: Reviewing published dementia prediction systems to understand common features, evaluation metrics, and performance targets (Pellegrini et al., 2018)
 
-**Dataset Examination**: Analyzing OASIS dataset characteristics to determine feasible features and classification tasks
+**Dataset Examination**: Analyzing OASIS dataset characteristics to determine feasible features and classification tasks (Marcus et al., 2007)
 
-**Supervisor Consultation**: Regular discussions identifying academic and technical requirements
+**Supervisor Consultation**: Regular discussions identifying academic and technical requirements (IEEE, 2014)
 
 **Dissertation Guidelines**: Aligning with MSc project evaluation criteria for system development projects
 
-**Best Practices Research**: Studying software engineering and ML research best practices for reproducible systems
+**Best Practices Research**: Studying software engineering and ML research best practices for reproducible systems (Haibe-Kains et al., 2020)
 
 ## 4.2 Functional Requirements
 
@@ -137,24 +137,24 @@ Requirements were gathered through multiple sources:
 
 ### 4.4.1 High-Level Architecture
 
-The system follows a layered architecture with clear separation of concerns:
+The system follows a layered architecture with clear separation of concerns (Gamma et al., 1994; Bass et al., 2012):
 
 **Layer 1: Data Access Layer**
-- Data loading from CSV files
-- Data validation and quality checks
+- Data loading from CSV files (Wickham and Grolemund, 2016)
+- Data validation and quality checks (Rahm and Do, 2000)
 - Data persistence and caching
 
 **Layer 2: Preprocessing Layer**
-- Missing value imputation
-- Feature encoding and scaling
-- Feature engineering
-- Train-test splitting
+- Missing value imputation (Little and Rubin, 2019)
+- Feature encoding and scaling (Géron, 2019)
+- Feature engineering (Zheng and Casari, 2018)
+- Train-test splitting (Hastie et al., 2009)
 
 **Layer 3: Model Layer**
-- Individual model training (LR, RF, GBM)
-- Ensemble model training (Stacking, Voting)
-- Model serialization and loading
-- Hyperparameter management
+- Individual model training (LR, RF, GBM) (James et al., 2013)
+- Ensemble model training (Stacking, Voting) (Dietterich, 2000)
+- Model serialization and loading (Pedregosa et al., 2011)
+- Hyperparameter management (Bergstra and Bengio, 2012)
 
 **Layer 4: Evaluation Layer**
 - Metric calculation

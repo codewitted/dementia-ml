@@ -100,21 +100,119 @@ World Health Organization. (2021). *Global status report on the public health re
 
 ---
 
-## Additional Resources
+## Additional Software Engineering and Machine Learning References
 
-**Datasets**:
-- OASIS: https://www.oasis-brains.org/
-- ADNI: http://adni.loni.usc.edu/
-- UK Biobank: https://www.ukbiobank.ac.uk/
+Allison, P. D. (2001). *Missing data*. Sage Publications.
 
-**Software Libraries**:
-- scikit-learn: https://scikit-learn.org/
-- PyTorch: https://pytorch.org/
-- SHAP: https://shap.readthedocs.io/
+Bass, L., Clements, P., & Kazman, R. (2012). *Software architecture in practice* (3rd ed.). Addison-Wesley Professional.
 
-**Project Repository**:
-- GitHub: https://github.com/codewitted/dementia-ml
+Basili, V. R., & Turner, A. J. (1975). Iterative enhancement: A practical technique for software development. *IEEE Transactions on Software Engineering*, SE-1(4), 390-396.
+
+Beck, K. (2003). *Test-driven development: By example*. Addison-Wesley Professional.
+
+Beck, K., Beedle, M., Van Bennekum, A., Cockburn, A., Cunningham, W., Fowler, M., ... & Thomas, D. (2001). Manifesto for agile software development. *Agile Alliance*.
+
+Bergstra, J., & Bengio, Y. (2012). Random search for hyper-parameter optimization. *Journal of Machine Learning Research*, 13, 281-305.
+
+Bishop, C. M. (2006). *Pattern recognition and machine learning*. Springer.
+
+Boehm, B. W. (1988). A spiral model of software development and enhancement. *Computer*, 21(5), 61-72.
+
+Bourque, P., & Fairley, R. E. (Eds.). (2014). *Guide to the Software Engineering Body of Knowledge (SWEBOK)*. IEEE Computer Society.
+
+Buitinck, L., Louppe, G., Blondel, M., Pedregosa, F., Mueller, A., Grisel, O., ... & Varoquaux, G. (2013). API design for machine learning software: experiences from the scikit-learn project. *arXiv preprint arXiv:1309.0238*.
+
+Chacon, S., & Straub, B. (2014). *Pro Git*. Apress.
+
+Chawla, N. V., Bowyer, K. W., Hall, L. O., & Kegelmeyer, W. P. (2002). SMOTE: Synthetic minority over-sampling technique. *Journal of Artificial Intelligence Research*, 16, 321-357.
+
+Cockburn, A. (2006). *Agile software development: The cooperative game* (2nd ed.). Addison-Wesley Professional.
+
+Dietterich, T. G. (2000). Ensemble methods in machine learning. In *International workshop on multiple classifier systems* (pp. 1-15). Springer.
+
+Domingos, P. (2012). A few useful things to know about machine learning. *Communications of the ACM*, 55(10), 78-87.
+
+Fowler, M. (2018). *Refactoring: Improving the design of existing code* (2nd ed.). Addison-Wesley Professional.
+
+Fowler, M., & Highsmith, J. (2001). The agile manifesto. *Software Development*, 9(8), 28-35.
+
+Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design patterns: Elements of reusable object-oriented software*. Addison-Wesley Professional.
+
+Géron, A. (2019). *Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow* (2nd ed.). O'Reilly Media.
+
+Hancock, J. T., & Khoshgoftaar, T. M. (2020). CatBoost for big data: An interdisciplinary review. *Journal of Big Data*, 7(1), 1-45.
+
+Harris, C. R., Millman, K. J., Van Der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., ... & Oliphant, T. E. (2020). Array programming with NumPy. *Nature*, 585(7825), 357-362.
+
+Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The elements of statistical learning: Data mining, inference, and prediction* (2nd ed.). Springer.
+
+He, H., & Garcia, E. A. (2009). Learning from imbalanced data. *IEEE Transactions on Knowledge and Data Engineering*, 21(9), 1263-1284.
+
+Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. *Computing in Science & Engineering*, 9(3), 90-95.
+
+IEEE. (2008). *IEEE Standard for Software and System Test Documentation* (IEEE Std 829-2008). IEEE Computer Society.
+
+IEEE. (2014). *Guide to the Software Engineering Body of Knowledge*. IEEE Computer Society.
+
+James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. Springer.
+
+Japkowicz, N., & Shah, M. (2011). *Evaluating learning algorithms: A classification perspective*. Cambridge University Press.
+
+Knuth, D. E. (1974). Structured programming with go to statements. *ACM Computing Surveys*, 6(4), 261-301.
+
+Kohavi, R. (1995). A study of cross-validation and bootstrap for accuracy estimation and model selection. In *International Joint Conference on Artificial Intelligence* (Vol. 14, No. 2, pp. 1137-1145).
+
+Kotsiantis, S. B., Kanellopoulos, D., & Pintelas, P. E. (2007). Data preprocessing for supervised learning. *International Journal of Computer Science*, 1(2), 111-117.
+
+Larman, C., & Basili, V. R. (2003). Iterative and incremental developments: A brief history. *Computer*, 36(6), 47-56.
+
+Little, R. J., & Rubin, D. B. (2019). *Statistical analysis with missing data* (3rd ed.). John Wiley & Sons.
+
+Martin, R. C. (2008). *Clean code: A handbook of agile software craftsmanship*. Pearson Education.
+
+McKinney, W. (2010). Data structures for statistical computing in Python. In *Proceedings of the 9th Python in Science Conference* (Vol. 445, pp. 51-56).
+
+Molnar, C. (2020). *Interpretable machine learning: A guide for making black box models explainable*. Lulu.com.
+
+Myers, G. J., Sandler, C., & Badgett, T. (2011). *The art of software testing* (3rd ed.). John Wiley & Sons.
+
+Ng, A. Y. (1997). Preventing "overfitting" of cross-validation data. In *ICML* (Vol. 97, pp. 245-253).
+
+Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., ... & Chintala, S. (2019). PyTorch: An imperative style, high-performance deep learning library. In *Advances in Neural Information Processing Systems* (pp. 8026-8037).
+
+Peng, R. D. (2011). Reproducible research in computational science. *Science*, 334(6060), 1226-1227.
+
+Potdar, K., Pardawala, T. S., & Pai, C. D. (2017). A comparative study of categorical variable encoding techniques for neural network classifiers. *International Journal of Computer Applications*, 175(4), 7-9.
+
+Powers, D. M. (2011). Evaluation: From precision, recall and F-measure to ROC, informedness, markedness and correlation. *Journal of Machine Learning Technologies*, 2(1), 37-63.
+
+Pressman, R. S., & Maxim, B. R. (2014). *Software engineering: A practitioner's approach* (8th ed.). McGraw-Hill Education.
+
+Raghunathan, T. E., Lepkowski, J. M., Van Hoewyk, J., & Solenberger, P. (2001). A multivariate technique for multiply imputing missing values using a sequence of regression models. *Survey Methodology*, 27(1), 85-96.
+
+Rahm, E., & Do, H. H. (2000). Data cleaning: Problems and current approaches. *IEEE Data Engineering Bulletin*, 23(4), 3-13.
+
+Raschka, S. (2018). Model evaluation, model selection, and algorithm selection in machine learning. *arXiv preprint arXiv:1811.12808*.
+
+Royce, W. W. (1970). Managing the development of large software systems. In *Proceedings of IEEE WESCON* (Vol. 26, No. 8, pp. 328-338).
+
+Sandve, G. K., Nekrutenko, A., Taylor, J., & Hovig, E. (2013). Ten simple rules for reproducible computational research. *PLoS Computational Biology*, 9(10), e1003285.
+
+Schwaber, K., & Beedle, M. (2001). *Agile software development with Scrum*. Prentice Hall.
+
+Schwaber, K., & Sutherland, J. (2017). The Scrum guide. *Scrum Alliance*, 21, 1-17.
+
+Sculley, D., Holt, G., Golovin, D., Davydov, E., Phillips, T., Ebner, D., ... & Dennison, D. (2015). Hidden technical debt in machine learning systems. In *Advances in Neural Information Processing Systems* (pp. 2503-2511).
+
+Sommerville, I. (2016). *Software engineering* (10th ed.). Pearson Education Limited.
+
+Stone, M. (1974). Cross-validatory choice and assessment of statistical predictions. *Journal of the Royal Statistical Society: Series B (Methodological)*, 36(2), 111-133.
+
+Wickham, H., & Grolemund, G. (2016). *R for data science: Import, tidy, transform, visualize, and model data*. O'Reilly Media.
+
+Zheng, A., & Casari, A. (2018). *Feature engineering for machine learning: Principles and techniques for data scientists*. O'Reilly Media.
 
 ---
 
-*Total References: 60+*
+*Total References: 100+ sources including medical, machine learning, and software engineering literature*
+

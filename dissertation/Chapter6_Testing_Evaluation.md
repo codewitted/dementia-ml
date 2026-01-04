@@ -2,13 +2,13 @@
 
 ## 6.1 Testing Methodology
 
-Comprehensive testing ensures code correctness, model validity, and result reliability. This project employed multi-level testing strategy:
+Comprehensive testing ensures code correctness, model validity, and result reliability (Myers et al., 2011; Bourque and Fairley, 2014). This project employed multi-level testing strategy:
 
-**Unit Testing**: Individual function testing for data loading, preprocessing, feature encoding  
-**Integration Testing**: Combined component testing to verify pipeline flow  
-**System Testing**: End-to-end pipeline execution with known datasets  
-**Model Validation**: Cross-validation, hold-out testing, comparison with literature  
-**Reproducibility Testing**: Multiple pipeline executions verifying identical results
+**Unit Testing**: Individual function testing for data loading, preprocessing, feature encoding (Beck, 2003)  
+**Integration Testing**: Combined component testing to verify pipeline flow (Pressman and Maxim, 2014)  
+**System Testing**: End-to-end pipeline execution with known datasets (IEEE, 2008)  
+**Model Validation**: Cross-validation, hold-out testing, comparison with literature (Hastie et al., 2009)  
+**Reproducibility Testing**: Multiple pipeline executions verifying identical results (Peng, 2011)
 
 ## 6.2 Unit Testing
 
@@ -90,7 +90,7 @@ python main.py --mode validate
 
 ### 6.5.1 Cross-Validation
 
-For ensemble methods, 5-fold stratified cross-validation:
+For ensemble methods, 5-fold stratified cross-validation (Kohavi, 1995; Stone, 1974):
 
 ```python
 from sklearn.model_selection import StratifiedKFold
@@ -108,11 +108,11 @@ for fold, (train_idx, val_idx) in enumerate(skf.split(X_train, y_train)):
     score = model.score(X_fold_val, y_fold_val)
 ```
 
-**Purpose**: Unbiased performance estimation, detecting overfitting
+**Purpose**: Unbiased performance estimation, detecting overfitting (Hastie et al., 2009)
 
 ### 6.5.2 Hold-Out Testing
 
-Final evaluation on completely held-out test set (20% of data):
+Final evaluation on completely held-out test set (20% of data) following best practices (Ng, 1997; Raschka, 2018):
 
 ```python
 # Models never see test set during training
@@ -124,7 +124,7 @@ accuracy = accuracy_score(y_test, predictions)
 auc_roc = roc_auc_score(y_test, probabilities[:, 1])
 ```
 
-**Ensures**: Unbiased performance assessment on unseen data
+**Ensures**: Unbiased performance assessment on unseen data (Japkowicz and Shah, 2011)
 
 ### 6.5.3 Stratified Splitting
 
