@@ -1,0 +1,28 @@
+name: ad-ensemble
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - notebook
+  - ipywidgets
+  - pillow
+  - pyyaml
+  - tqdm
+  - pip:
+      - torch
+      - torchvision
+      - scikit-image
+      - shap
+      - grad-cam
+      - kagglehub
+      - opencv-python
+      - albumentations
+      - rich
