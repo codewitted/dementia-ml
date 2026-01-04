@@ -1,13 +1,12 @@
 # Quick Start Guide
 
-This guide will help you get the dementia-ml project running in under 15 minutes.
+Get the dementia prediction pipeline running in under 15 minutes.
 
 ## Prerequisites
 
 - Python 3.10+
 - Conda (recommended) or pip
 - 8GB RAM minimum
-- Internet connection for data download
 
 ## Step 1: Clone Repository
 
@@ -18,14 +17,14 @@ cd dementia-ml
 
 ## Step 2: Setup Environment
 
-### Option A: Conda (Recommended)
+### Conda (Recommended)
 
 ```bash
 conda env create -f environment.yml
 conda activate ad-ensemble
 ```
 
-### Option B: pip + venv
+### pip Alternative
 
 ```bash
 python -m venv venv
@@ -33,91 +32,64 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Step 3: Download Dataset
+## Step 3: Prepare Data
 
-1. Visit OASIS website or Kaggle:
-   - https://www.oasis-brains.org/
-   - https://www.kaggle.com/datasets/ninadaithal/imagesoasis
+### Option A: Download OASIS Dataset
 
-2. Download and extract to:
-   ```
-   data/raw/clinical.csv
-   data/raw/Non Demented/
-   data/raw/Mild Dementia/
-   ```
+1. Visit https://www.oasis-brains.org/ or https://www.kaggle.com/datasets/ninadaithal/imagesoasis
+2. Download and extract to `data/raw/clinical.csv`
 
-**Note**: Data files are large (~1-5GB) and not included in repository.
-
-## Step 4: Run Workflow
-
-### Option 1: Interactive Notebooks
+### Option B: Generate Synthetic Data
 
 ```bash
-jupyter lab
+python scripts/generate_realistic_oasis_data.py
 ```
 
-Then run notebooks in order (00 → 06).
-
-### Option 2: Command-Line Scripts
+## Step 4: Run Pipeline
 
 ```bash
-# Train all models
-python scripts/train_tabular.py
-python scripts/train_ensemble.py
+python main.py --mode full
+```
 
-# Evaluate and generate reports
-python scripts/evaluate_models.py
+Or use the automated script:
+
+```bash
+python scripts/run_full_pipeline.py
 ```
 
 ## Step 5: View Results
 
 Results are saved to:
-- `outputs/tables/` - Performance metrics (CSV, LaTeX)
-- `outputs/figures/` - Visualizations (PNG, PDF)
-- `models/` - Trained models
+
+- `outputs/tables/model_performance.csv` - Performance metrics
+- `outputs/figures/roc_curves.png` - ROC curve visualization
+- `outputs/figures/confusion_matrix_*.png` - Confusion matrices
+- `outputs/EXECUTIVE_SUMMARY.txt` - Complete summary
 
 ## Troubleshooting
 
-### "Module not found" errors
-```bash
-# Ensure environment is activated
-conda activate ad-ensemble
+### Module not found errors
 
-# Reinstall dependencies
+```bash
+conda activate ad-ensemble
 conda env update -f environment.yml
 ```
 
-### "Data file not found" errors
-- Check data is in `data/raw/` directory
-- Verify file names match config.yaml
-- See `data/README_data.md` for details
+### Data file not found
 
-### GPU not detected (optional)
-```bash
-# Check CUDA availability
-python -c "import torch; print(torch.cuda.is_available())"
-```
-
-CNN training will use CPU if GPU is not available (slower but functional).
+Ensure data is in `data/raw/` directory. See `data/README_data.md` for details.
 
 ## Running Tests
 
 ```bash
-# Verify installation
 python -m pytest tests/ -v
 ```
 
 ## Next Steps
 
-- Read full documentation in [README.md](README.md)
-- Explore notebooks for detailed explanations
-- Customize `scripts/config.yaml` for your needs
-- Check [CONTRIBUTING.md](CONTRIBUTING.md) to contribute
-
-## Getting Help
-
-- **Issues**: https://github.com/codewitted/dementia-ml/issues
-- **Documentation**: See README.md and notebook comments
+- Read [README.md](README.md) for complete documentation
+- Review [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for reproduction guide
+- See [VALIDATION.md](VALIDATION.md) for requirements checklist
 
 ---
 
