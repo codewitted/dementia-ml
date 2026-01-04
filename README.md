@@ -1,9 +1,9 @@
-# Dementia Prediction using Machine Learning: An Examiner-Ready Repository
+# Dementia Prediction using Machine Learning: A ready to run results Repository
 
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **MSc/PhD Dissertation Project**: Early Detection of Dementia using Multi-Modal Machine Learning
+> **MSc Dissertation Project**: Early Detection of Dementia using Multi-Modal Machine Learning
 
 This repository contains a comprehensive, reproducible machine learning pipeline for predicting early onset dementia using clinical and neuroimaging data. The project demonstrates rigorous academic standards with complete workflows, extensive documentation, and publication-ready results.
 
@@ -363,17 +363,19 @@ This project is licensed under the MIT License - see LICENSE file for details.
 For questions about this repository or the methodology:
 
 - **GitHub Issues**: [Open an issue](https://github.com/codewitted/dementia-ml/issues)
-- **Email**: [your-email@example.com]
+- **Email**: codewitted@gmail.com
 
 ---
 
 ## Acknowledgments
 
-- OASIS dataset providers
+- OASIS dataset providers wustl.edu
+- ida.loni.usc.edu data providers
+- OASIS Alzheimer's Detection Kaggle datasets
 - Open-source ML/DL community
 - Academic supervisors and collaborators
 
 ---
 
 **Last Updated**: January 2026  
-**Status**: Examiner-ready for dissertation submission
+**Status**: Dissertation database Submission
