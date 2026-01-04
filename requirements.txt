@@ -42,5 +42,10 @@ kagglehub>=0.1.0
 pytest>=7.0.0
 pytest-cov>=3.0.0
 
+# API (optional)
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.0.0
+
 # Note: Some packages may have different names or availability via pip vs conda
 # Recommended to use conda environment.yml for best compatibility
