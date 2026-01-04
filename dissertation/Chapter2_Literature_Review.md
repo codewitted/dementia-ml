@@ -104,50 +104,69 @@ Ensemble methods have demonstrated superior performance across various healthcar
 
 ### 2.4.1 Logistic Regression
 
-Logistic regression is a fundamental binary classification algorithm modeling the probability of class membership through a logistic function:
+Logistic regression models the posterior probability of class membership via the logistic sigmoid function:
 
-P(Y=1|X) = 1 / (1 + exp(-(β₀ + β₁X₁ + ... + βₙXₙ)))
+$$P(y=1|\mathbf{x}; \mathbf{w}, b) = \sigma(\mathbf{w}^T\mathbf{x} + b) = \frac{1}{1 + \exp(-(\mathbf{w}^T\mathbf{x} + b))}$$
 
-**Advantages**:
-- Simple, interpretable, fast to train
-- Provides probabilistic predictions
-- Well-understood statistical properties
-- Effective baseline for comparison
+where $\mathbf{w} \in \mathbb{R}^d$ represents feature weights, $b \in \mathbb{R}$ is the bias term, and $\mathbf{x} \in \mathbb{R}^d$ denotes the feature vector. The decision boundary is a hyperplane defined by $\mathbf{w}^T\mathbf{x} + b = 0$.
 
-**Limitations**:
-- Assumes linear decision boundary
-- Limited capacity for complex patterns
-- Sensitive to feature scaling
-- Struggles with correlated features
+**Training Objective** (Maximum likelihood with L2 regularization):
 
-In dementia prediction, logistic regression has achieved modest performance (AUC-ROC 0.80-0.85) but serves as an important interpretable baseline (Barnes et al., 2009).
+$$\min_{\mathbf{w}, b} \left\{ -\sum_{i=1}^{N} \left[ y_i \log \hat{y}_i + (1-y_i) \log(1-\hat{y}_i) \right] + \frac{\lambda}{2} \|\mathbf{w}\|_2^2 \right\}$$
+
+**Advantages**: Computationally efficient ($O(Nd)$ per iteration), probabilistically interpretable via odds ratios $\exp(w_j)$, convex optimization guarantees global optimum, provides confidence estimates through predicted probabilities.
+
+**Limitations**: Linear decision boundary constrains expressiveness for non-linear patterns, susceptible to multicollinearity when features correlate, requires feature scaling for optimal convergence, limited representational capacity for complex interactions.
+
+**Performance in Dementia Prediction**: Achieves AUC-ROC 0.80-0.85 on clinical datasets (Barnes et al., 2009), serving as interpretable baseline enabling coefficient-based feature importance analysis clinically relevant for understanding biomarker contributions.
 
 ### 2.4.2 Random Forest
 
-Random Forest is an ensemble of decision trees trained on bootstrap samples with random feature subsets at each split (Breiman, 2001). Each tree votes for class membership, with final prediction by majority vote.
+Random Forest constructs an ensemble of $M$ decision trees via bootstrap aggregating with feature randomization (Breiman, 2001):
 
-**Advantages**:
-- Handles non-linear relationships
-- Robust to overfitting
-- Provides feature importance measures
-- Handles missing data well
-- No feature scaling required
+$$f_{\text{RF}}(\mathbf{x}) = \frac{1}{M} \sum_{m=1}^{M} h_m(\mathbf{x})$$
 
-**Limitations**:
-- Less interpretable than single decision trees
-- Computationally intensive for large datasets
-- Can be biased toward features with many categories
-- May not extrapolate well beyond training data
+where each tree $h_m$ is trained on a bootstrap sample $\mathcal{B}_m$ drawn with replacement from the training set. At each node split, a random subset of $m_{\text{try}} = \lfloor \sqrt{d} \rfloor$ features is considered, reducing inter-tree correlation and improving ensemble diversity.
 
-Random Forest has achieved strong performance in dementia prediction (AUC-ROC 0.85-0.90), with feature importance analysis revealing MMSE and brain volume as key predictors (Islam and Zhang, 2018).
+**Node Splitting**: Gini impurity criterion selects optimal feature-threshold pairs:
+
+$$G(S) = 1 - \sum_{c=1}^{C} p_c^2, \quad p_c = \frac{|\{i \in S : y_i = c\}|}{|S|}$$
+
+**Feature Importance**: Computed via mean decrease in Gini impurity aggregated across all trees and splits, enabling quantification of each feature's discriminative power.
+
+**Advantages**: Captures non-linear decision boundaries and feature interactions, inherently resistant to overfitting via averaging (variance reduction), handles missing values through surrogate splits, requires no feature scaling, provides robust out-of-bag error estimates, parallelizable training.
+
+**Limitations**: Reduced interpretability compared to single trees (ensemble of hundreds of models), computationally demanding for large $M$ and deep trees, potential bias toward high-cardinality categorical features, limited extrapolation beyond training distribution.
+
+**Dementia Prediction Performance**: Consistently achieves AUC-ROC 0.85-0.90 on neuroimaging datasets (Islam and Zhang, 2018), with feature importance analyses identifying MMSE, normalized whole brain volume (nWBV), and age as dominant predictors.
 
 ### 2.4.3 Gradient Boosting Machines
 
-Gradient Boosting builds an ensemble by sequentially adding decision trees that correct errors of previous trees, minimizing a loss function through gradient descent (Friedman, 2001).
+Gradient Boosting constructs an additive ensemble by sequentially fitting models to pseudo-residuals, implementing gradient descent in function space (Friedman, 2001):
 
-**Advantages**:
-- High predictive accuracy
-- Handles various data types
+$$f_M(\mathbf{x}) = \sum_{m=0}^{M} \nu h_m(\mathbf{x})$$
+
+where $h_0$ is a constant initial model, $\nu \in (0,1]$ is the learning rate (shrinkage parameter), and each subsequent tree $h_m$ approximates the negative gradient of the loss function with respect to the current ensemble prediction.
+
+**Iterative Training Algorithm**:
+
+For $m = 1, \ldots, M$:
+1. Compute pseudo-residuals: $r_{im} = -\frac{\partial L(y_i, f_{m-1}(\mathbf{x}_i))}{\partial f_{m-1}(\mathbf{x}_i)}$
+2. Fit regression tree $h_m$ to targets $\{(\mathbf{x}_i, r_{im})\}_{i=1}^{N}$  
+3. Update ensemble: $f_m(\mathbf{x}) = f_{m-1}(\mathbf{x}) + \nu h_m(\mathbf{x})$
+
+**Loss Function** (Binary cross-entropy):
+$$L(y, f) = y \log(1 + e^{-f}) + (1-y) \log(1 + e^{f})$$
+
+**Regularization Mechanisms**: Learning rate $\nu$ controls step size (smaller values require more iterations but improve generalization), tree depth constraint limits model complexity, subsampling introduces stochastic gradient boosting for additional variance reduction.
+
+**Advantages**: State-of-the-art predictive accuracy on structured data, handles heterogeneous features naturally, robust to outliers via appropriate loss functions, built-in feature importance via gain metric, flexible framework accommodating custom loss functions.
+
+**Limitations**: Prone to overfitting with insufficient regularization, sequential training prohibits parallelization across trees, sensitive to hyperparameter settings ($M$, $\nu$, max depth), computationally expensive for large datasets, requires careful tuning to prevent degradation with excessive boosting iterations.
+
+**Hyperparameter Trade-offs**: Lower learning rate $\nu$ with higher iteration count $M$ typically yields better generalization (Hastie et al., 2009), max depth typically set to 3-8 (shallow trees act as weak learners suitable for boosting), early stopping via validation monitoring prevents overtraining.
+
+**Clinical Performance**: Achieves AUC-ROC 0.87-0.92 on dementia prediction tasks, often matching or exceeding Random Forest with proper tuning (Moradi et al., 2015).
 - Built-in feature importance
 - Flexible loss functions
 - Often achieves state-of-the-art performance
