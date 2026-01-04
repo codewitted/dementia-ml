@@ -1,80 +1,18 @@
-# Alzheimer’s Early Dementia Detection: Interpretable Ensemble ML Pipeline
+# Data Provenance and Project Decisions
 
-## Project Overview
+## Initial Data Source: ADNI
+At the start of this project, the Alzheimer's Disease Neuroimaging Initiative (ADNI) dataset was identified as an ideal data source due to its comprehensive imaging and clinical data. The process to obtain access to ADNI was initiated as per their research application protocols.
 
-This project develops an interpretable ensemble machine learning pipeline combining MRI and clinical tabular data to predict early dementia/Alzheimer’s (CDR > 0) using the OASIS-1 dataset.  
-It benchmarks tabular (logistic regression, random forest, gradient boosting) and MRI slice CNNs, and fuses their predictions with late-stage stacking/ensembles. Explainability is delivered via SHAP (tabular) and GradCAM (imaging), delivering robust, clinician-auditable models.
+## Challenges Accessing ADNI
+However, despite following standard procedure, access to ADNI data proved problematic within the project timeline. Delays stemmed from extended approval times, data sharing agreements, and additional administrative requirements, making it infeasible to use ADNI as the project's primary dataset under current time constraints.
 
-## Workflow
+## Final Choice: OASIS Dataset
+Given the bottlenecks faced with ADNI, the project pivoted to utilize the OASIS (Open Access Series of Imaging Studies) dataset. OASIS is a reputable and openly available resource, providing MRI imaging data suitable for this research. The choice of OASIS ensured that project milestones could be met without compromising on data quality or relevance.
 
-1. **Data acquisition** (MRI slices + clinical/demographic spreadsheet)
-2. **EDA & preprocessing** (data cleaning, one-hot, scaling, image preprocessing)
-3. **Model training**  
-   - Tabular: LR, RF, GBM  
-   - Imaging: 2D-CNN (per slice, with subject-level pooling/fusion)
-   - Ensemble: Meta-learner stacking  
-4. **Evaluation** (Accuracy, ROC-AUC, F1, confusion, calibration)
-5. **Explainability** (SHAP, GradCAM, joint feature importances)
-6. **Reporting** (tables, plots, figures auto-generated)
-
-## Getting Started
-
-### Prerequisites
-- Python ≥ 3.10, conda (recommended for GPU/Torch)
-- OASIS dataset access ([Kaggle link](https://www.kaggle.com/datasets/ninadaithal/imagesoasis) or original OASIS [site](https://oasis-brains.org))
-- (Optional: CUDA 11/12-enabled GPU for CNNs)
-
-### Setup
-```bash
-conda env create -f environment.yml
-conda activate ad-ensemble
-```
-
-### Data Preparation
-- **Clinical CSV:** Place in `data/raw/`  
-- **MRI images:** Place in `data/raw/Mild Dementia`, `data/raw/Non Demented`, etc (see Data README for structure).
-
-### Pipeline Automation (Example)
-```bash
-# Run EDA and preprocessing
-jupyter notebook notebooks/01_EDA_and_Preprocessing.ipynb
-
-# Train tabular models
-python scripts/train_tabular.py
-
-# Train MRI CNN model (GPU recommended)
-python scripts/train_cnn.py
-
-# Run ensemble/stacking
-python scripts/run_ensemble.py
-
-# Run explainability/XAI notebooks
-jupyter notebook notebooks/05_Explainability_And_XAI.ipynb
-```
-
-All main outputs (tables, plots, trained models) are saved in `/outputs/`.
-
-### Reproducibility
-- Fixed seeds, cross-validation splits, config-driven paths and parameters.
-- Full pipeline runs in Docker via:
-```bash
-docker build -t ad-ensemble .
-docker run --gpus all -v $(pwd)/data:/app/data ad-ensemble
-```
-
-### Structure
-
-- `data/` → Dataset input (not pushed to GitHub for privacy, scripts provided)
-- `notebooks/` → EDA, model, XAI (ready for examiner review)
-- `src/` → Source code modules and utilities
-- `scripts/` → Training/automation scripts
-- `outputs/` → Results, plots, tables, model weights
-- `tests/` → Unit/integration test files for code sanity
-
-### Citation/Acknowledgement
-
-Please cite OASIS:  
-Marcus, D.S. et al. (2007) ‘Open Access Series of Imaging Studies (OASIS): Cross-sectional MRI data in young, middle aged, nondemented, and demented older adults’, Journal of Cognitive Neuroscience, 19(9), pp. 1498–1507.  
-**Code released for academic and examiner reproducibility only.**
+## Transparency & Statement for Examiners
+- Initial project documentation, including the original plan to use ADNI, is retained for reference.
+- All analyses, results, and models in this repository are based exclusively on OASIS data, with any outputs or code referencing ADNI included purely for illustrative purposes or legacy pipeline components.
+- This pivot and rationale are communicated to examiners for full transparency, ensuring clear distinction between intended and implemented data sources.
 
 ---
+This section is provided to clarify data sourcing decisions and to document project evolution for any reviewers or examiners.
