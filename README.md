@@ -253,11 +253,11 @@ python -m pytest tests/ -v
 
 ```bibtex
 @software{dementia_ml_2026,
-  author = {Codewitted},
+  author = {[Your Name]},
   title = {Dementia Prediction using Multi-Modal Machine Learning},
   year = {2026},
   publisher = {GitHub},
-  url = {https://github.com/codewitted/dementia-ml}
+  url = {https://github.com/[your-username]/dementia-ml}
 }
 ```
 

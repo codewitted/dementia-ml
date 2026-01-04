@@ -17,8 +17,8 @@ Usage:
     python main.py --mode tabular     # Run only tabular models
     python main.py --mode validate    # Validate environment and tests
 
-Author: Codewitted
-Institution: MSc/PhD Dissertation Project
+Author: [Your Name]
+Institution: [Your Institution]
 """
 
 import os
