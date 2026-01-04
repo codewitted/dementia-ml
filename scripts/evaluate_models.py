@@ -189,9 +189,20 @@ def main(config_path):
         stratify=y_binary if train_config['stratify'] else None
     )
     
-    # Preprocess
+    # Preprocess - use same feature naming as training
     X_test_processed = preprocessor.transform(X_test)
-    feature_names = preprocessor.get_feature_names_out()
+    
+    # Get feature names matching the training pipeline format
+    actual_numeric = [f for f in feature_config['numeric'] if f in available_features]
+    actual_categorical = [f for f in feature_config['categorical'] if f in available_features]
+    
+    num_features_out = actual_numeric
+    if hasattr(preprocessor.named_transformers_["cat"].named_steps["onehot"], "get_feature_names_out"):
+        cat_features_out = preprocessor.named_transformers_["cat"].named_steps["onehot"].get_feature_names_out(actual_categorical)
+    else:
+        cat_features_out = preprocessor.named_transformers_["cat"].named_steps["onehot"].get_feature_names(actual_categorical)
+    
+    feature_names = num_features_out + list(cat_features_out)
     X_test_processed = pd.DataFrame(
         X_test_processed, columns=feature_names, index=X_test.index
     )
