@@ -161,11 +161,12 @@ def run_full_pipeline():
     ):
         return False
     
-    # Step 4: Run validation tests
+    # Step 4: Run validation tests (from root directory where tests/ is located)
     if not run_step(
         "Run Validation Tests",
         "python -m pytest tests/ -v",
         optional=True
+        # Note: No cwd parameter - tests/ is at root level
     ):
         logger.warning("Some tests did not pass (non-critical)")
     
@@ -207,10 +208,11 @@ def run_validation():
     logger.info("DEMENTIA PREDICTION: VALIDATION")
     logger.info("="*60 + "\n")
     
-    # Run tests
+    # Run tests (from root directory where tests/ is located)
     if not run_step(
         "Run Unit Tests",
         "python -m pytest tests/ -v"
+        # Note: No cwd parameter - tests/ is at root level
     ):
         logger.warning("Some tests did not pass")
     
