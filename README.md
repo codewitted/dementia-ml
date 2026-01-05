@@ -302,4 +302,4 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 
 **Last Updated**: January 2026  
 **Version**: 1.0.0  
-**Status**: Dissertation Ready
+**Author**: Kevin Byamukama ID: 22031632
