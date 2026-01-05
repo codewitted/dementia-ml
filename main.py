@@ -89,7 +89,7 @@ def check_data():
     return True
 
 
-def run_step(step_name, command, optional=False):
+def run_step(step_name, command, optional=False, cwd=None):
     """Execute a pipeline step with error handling."""
     logger.info(f"\n{'='*60}")
     logger.info(f"STEP: {step_name}")
@@ -104,7 +104,8 @@ def run_step(step_name, command, optional=False):
             shell=True,
             check=True,
             capture_output=True,
-            text=True
+            text=True,
+            cwd=cwd
         )
         
         elapsed_time = time.time() - start_time
@@ -134,33 +135,38 @@ def run_full_pipeline():
     logger.info("="*60 + "\n")
     
     pipeline_start = time.time()
+    scripts_dir = Path(__file__).parent / 'scripts'
     
     # Step 1: Train tabular models (Logistic Regression, Random Forest, Gradient Boosting)
     if not run_step(
         "Train Tabular Models",
-        "python scripts/train_tabular.py --config scripts/config.yaml"
+        "python train_tabular.py --config config.yaml",
+        cwd=str(scripts_dir)
     ):
         return False
     
     # Step 2: Train ensemble models (Stacking, Voting)
     if not run_step(
         "Train Ensemble Models",
-        "python scripts/train_ensemble.py --config scripts/config.yaml"
+        "python train_ensemble.py --config config.yaml",
+        cwd=str(scripts_dir)
     ):
         return False
     
     # Step 3: Evaluate all models and generate outputs
     if not run_step(
         "Evaluate Models",
-        "python scripts/evaluate_models.py --config scripts/config.yaml"
+        "python evaluate_models.py --config config.yaml",
+        cwd=str(scripts_dir)
     ):
         return False
     
-    # Step 4: Run validation tests
+    # Step 4: Run validation tests (from root directory where tests/ is located)
     if not run_step(
         "Run Validation Tests",
         "python -m pytest tests/ -v",
         optional=True
+        # Note: No cwd parameter - tests/ is at root level
     ):
         logger.warning("Some tests did not pass (non-critical)")
     
@@ -181,10 +187,12 @@ def run_tabular_only():
     logger.info("="*60 + "\n")
     
     pipeline_start = time.time()
+    scripts_dir = Path(__file__).parent / 'scripts'
     
     if not run_step(
         "Train Tabular Models",
-        "python scripts/train_tabular.py --config scripts/config.yaml"
+        "python train_tabular.py --config config.yaml",
+        cwd=str(scripts_dir)
     ):
         return False
     
@@ -200,10 +208,11 @@ def run_validation():
     logger.info("DEMENTIA PREDICTION: VALIDATION")
     logger.info("="*60 + "\n")
     
-    # Run tests
+    # Run tests (from root directory where tests/ is located)
     if not run_step(
         "Run Unit Tests",
         "python -m pytest tests/ -v"
+        # Note: No cwd parameter - tests/ is at root level
     ):
         logger.warning("Some tests did not pass")
     
